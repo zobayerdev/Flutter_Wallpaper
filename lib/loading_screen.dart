@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/login_screen.dart';
 import 'constants/app_constants.dart';
 
 import 'helpers/di.dart';
@@ -47,7 +48,7 @@ class _LoadingState extends State<Loading> {
       return appData.read(kKeyIsLoggedIn)
           ? WelcomeScreen()
           : appData.read(kKeyfirstTime)
-              ? WelcomeScreen() //AuthRuleScreen()
+              ? LoginScreen() //AuthRuleScreen()
               : WelcomeScreen();
     }
     /* return TimeAppointmentScreen();

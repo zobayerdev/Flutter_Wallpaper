@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/login_screen.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/signup_screen.dart';
 
 final class Routes {
   static final Routes _routes = Routes._internal();
@@ -6,7 +10,8 @@ final class Routes {
   static Routes get instance => _routes;
 
   // ################## Auth User ##################
-  static const String logInUserScreen = '/logInUserScreen';
+  static const String logInScreen = '/logInScreen';
+  static const String signUpScreen = '/signUpScreen';
 }
 
 final class RouteGenerator {
@@ -16,11 +21,15 @@ final class RouteGenerator {
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.logInUserScreen:
-      //   return Platform.isAndroid
-      //       ? _FadedTransitionRoute(
-      //           widget: LoginUserScreen(), settings: settings)
-      //       : CupertinoPageRoute(builder: (context) => LoginUserScreen());
+      case Routes.logInScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: LoginScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => LoginScreen());
+
+      case Routes.signUpScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: SignupScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => SignupScreen());
 
       default:
         return null;

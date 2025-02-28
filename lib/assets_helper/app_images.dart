@@ -4,9 +4,11 @@ class AppImages {
 
   /*all assets here*/
   static const String appLogo = '$imageRoute/appLogo.png';
-  
+
   // other's images
   static const String searchImage = '$imageRoute/searchs_new.png';
   static const String iconImage = '$imageRoute/icon.png';
-
+  static const String bgImage = '$imageRoute/background.png';
+  static const String logo = '$imageRoute/logo.png';
+  static const String googleImage = '$imageRoute/google_image.png';
 }
