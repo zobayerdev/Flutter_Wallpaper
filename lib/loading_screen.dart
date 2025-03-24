@@ -46,7 +46,7 @@ class _LoadingState extends State<Loading> {
       return const WelcomeScreen();
     } else {
       return appData.read(kKeyIsLoggedIn)
-          ? WelcomeScreen()
+          ? LoginScreen()
           : appData.read(kKeyfirstTime)
               ? LoginScreen() //AuthRuleScreen()
               : WelcomeScreen();
