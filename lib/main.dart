@@ -1,4 +1,4 @@
- import 'package:wallpaper_hub/assets_helper/app_colors.dart';
+import 'package:wallpaper_hub/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'constants/custome_theme.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     rotation();
     setInitValue();
- return PopScope(
+    return PopScope(
         canPop: false,
         // ignore: deprecated_member_use
         onPopInvoked: (bool didPop) async {
@@ -39,9 +39,7 @@ class MyApp extends StatelessWidget {
           builder: (context, constraints) {
             return const UtillScreenMobile();
           },
-        )
- );
-    
+        ));
   }
 }
 
@@ -52,29 +50,29 @@ class UtillScreenMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return PopScope(
-          canPop: false,
-          onPopInvokedWithResult: (bool didPop, dynamic d) async {
-            showMaterialDialog(context);
-          },
-          child: MaterialApp(
-            //    showPerformanceOverlay: true,
-            theme: ThemeData(
-                unselectedWidgetColor: Colors.white,
-                primarySwatch: CustomTheme.kToDark,
-                useMaterial3: false,
-                scaffoldBackgroundColor: AppColors.whiteColor,
-                appBarTheme:
-                    const AppBarTheme(color: AppColors.whiteColor, elevation: 0)),
-            debugShowCheckedModeBanner: false,
-            builder: (context, widget) {
-              return MediaQuery(data: MediaQuery.of(context), child: widget!);
-            },
-            navigatorKey: NavigationService.navigatorKey,
-            onGenerateRoute: RouteGenerator.generateRoute,
-            home: Loading(),
-          //  home: HomeScreen(),
-          ),
-        );
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, dynamic d) async {
+        showMaterialDialog(context);
+      },
+      child: MaterialApp(
+        //    showPerformanceOverlay: true,
+        theme: ThemeData(
+            unselectedWidgetColor: Colors.white,
+            primarySwatch: CustomTheme.kToDark,
+            useMaterial3: false,
+            scaffoldBackgroundColor: AppColors.whiteColor,
+            appBarTheme:
+                const AppBarTheme(color: AppColors.whiteColor, elevation: 0)),
+        debugShowCheckedModeBanner: false,
+        builder: (context, widget) {
+          return MediaQuery(data: MediaQuery.of(context), child: widget!);
+        },
+        navigatorKey: NavigationService.navigatorKey,
+        onGenerateRoute: RouteGenerator.generateRoute,
+        home: Loading(),
+        //  home: HomeScreen(),
+      ),
+    );
   }
 }

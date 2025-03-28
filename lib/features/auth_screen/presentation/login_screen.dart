@@ -126,11 +126,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                "Forget Password?",
-                                style: TextFontStyle.textStyle13w500Poppins
-                                    .copyWith(
-                                  color: AppColors.primaryColor,
+                              GestureDetector(
+                                onTap: () {
+                                  NavigationService.navigateTo(
+                                    Routes.forgetPassword,
+                                  );
+                                },
+                                child: Text(
+                                  "Forget Password?",
+                                  style: TextFontStyle.textStyle13w500Poppins
+                                      .copyWith(
+                                    color: AppColors.primaryColor,
+                                  ),
                                 ),
                               ),
                             ],

@@ -147,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 5),
                           CustomTextFormField(
                             isPrefixIcon: true,
                             isBorder: true,
@@ -157,8 +157,23 @@ class _SignupScreenState extends State<SignupScreen> {
                             controller: _emailController,
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 15,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Password',
+                                style: TextFontStyle.textStyle13w500Poppins
+                                    .copyWith(
+                                  color: AppColors.c4B5563,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
                           CustomTextFormField(
                             obscureText: _isObscure,
                             isPrefixIcon: true,
@@ -177,8 +192,23 @@ class _SignupScreenState extends State<SignupScreen> {
                             controller: _passwordController,
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 15,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Confirm Password',
+                                style: TextFontStyle.textStyle13w500Poppins
+                                    .copyWith(
+                                  color: AppColors.c4B5563,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
                           CustomTextFormField(
                             obscureText: _isCObscure,
                             isPrefixIcon: true,
@@ -292,6 +322,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ],
                       ),
                     ),
+                    
                     SizedBox(
                       height: 20,
                     ),
