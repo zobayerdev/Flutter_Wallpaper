@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:wallpaper_hub/assets_helper/app_colors.dart';
 import 'package:wallpaper_hub/assets_helper/app_fonts.dart';
 import 'package:wallpaper_hub/assets_helper/app_icons.dart';
 import 'package:wallpaper_hub/assets_helper/app_images.dart';
+import 'package:wallpaper_hub/assets_helper/app_lottie.dart';
 import 'package:wallpaper_hub/common_widgets/custom_button.dart';
-import 'package:wallpaper_hub/common_widgets/custom_text_field.dart';
+import 'package:wallpaper_hub/common_widgets/custom_textField.dart';
 import 'package:wallpaper_hub/features/auth_screen/widgets/custom_image_button.dart';
 import 'package:wallpaper_hub/helpers/all_routes.dart';
 import 'package:wallpaper_hub/helpers/navigation_service.dart';
@@ -18,6 +19,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isObscure = true;
+  bool isLoading = false; // Track the loading state
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               AppColors.gradiant_two,
               AppColors.gradiant_one,
             ],
-            stops: [
-              0.0,
-              1.0
-            ],
+            stops: [0.0, 1.0],
           ),
         ),
         child: SizedBox(
@@ -91,34 +94,33 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           SizedBox(height: 20),
-                          CustomTextfield(
-                            hintText: 'Enter Email',
-                            inputType: TextInputType.emailAddress,
-                            fillColor: AppColors.cF9FAFB,
-                            borderColor: AppColors.cF9FAFB,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                AppIcons.emailSvg,
-                              ),
-                            ),
+                          CustomTextFormField(
+                            isPrefixIcon: true,
+                            isBorder: true,
+                            fillColor: AppColors.cFBFBFB,
+                            hintText: 'Email',
+                            iconpath: AppIcons.emailSvg,
+                            controller: _emailController,
                           ),
-                          SizedBox(height: 20),
-                          CustomTextfield(
-                            hintText: 'Enter Password',
-                            inputType: TextInputType.emailAddress,
-                            fillColor: AppColors.cF9FAFB,
-                            borderColor: AppColors.cF9FAFB,
-                            isObsecure: true,
-                            suffixIcon: Icon(
-                              Icons.visibility_off_outlined,
-                            ),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                AppIcons.lockSvg,
-                              ),
-                            ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CustomTextFormField(
+                            obscureText: _isObscure,
+                            isPrefixIcon: true,
+                            isBorder: true,
+                            fillColor: AppColors.cFBFBFB,
+                            suffixIcon: _isObscure
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            onSuffixIconTap: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                            hintText: 'Password',
+                            iconpath: AppIcons.lockSvg,
+                            controller: _passwordController,
                           ),
                           SizedBox(height: 10),
                           Row(
@@ -134,20 +136,53 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           SizedBox(height: 20),
-                          customButton(
-                            name: 'Log in',
-                            onCallBack: () {
-                            },
-                            context: context,
-                            color: AppColors.primaryColor,
-                            borderColor: AppColors.primaryColor,
-                          ),
+                          isLoading // If the loading state is true, show loading
+                              ? Container(
+                                  height: 62,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: AppColors.primaryColor,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Lottie.asset(
+                                    AppLottie.loading,
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                )
+                              : customButton(
+                                  name: 'Sign In',
+                                  onCallBack: () async {
+                                    setState(() {
+                                      isLoading = true; // Start loading
+                                    });
+
+                                    // await postLoginRx.signIn(
+                                    //   email: _emailController.text,
+                                    //   password: _passwordController.text,
+                                    // );
+
+                                    // setState(() {
+                                    //   isLoading = false; // Stop loading
+                                    // });
+
+                                    // NavigationService.navigateTo(
+                                    //     Routes.navigationScreen);
+                                  },
+                                  context: context,
+                                  color: AppColors.primaryColor,
+                                  borderColor: AppColors.primaryColor,
+                                ),
                           SizedBox(height: 20),
                           Text(
                             "or continue with",
                             style:
                                 TextFontStyle.textStyle13w500Poppins.copyWith(
-                              color: AppColors.primaryColor,
+                              color: AppColors.c3D4040,
                             ),
                           ),
                           SizedBox(height: 20),
@@ -171,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "Don't have an account?",
                                 style: TextFontStyle.textStyle13w500Poppins
                                     .copyWith(
-                                  color: AppColors.primaryColor,
+                                  color: AppColors.c3D4040,
                                 ),
                               ),
                               SizedBox(width: 5),
@@ -185,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   "Sign Up",
                                   style: TextFontStyle.textStyle13w500Poppins
                                       .copyWith(
-                                    color: AppColors.primaryColor,
+                                    color: AppColors.c3D4040,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
