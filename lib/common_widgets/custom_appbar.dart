@@ -1,7 +1,4 @@
-import 'package:wallpaper_hub/assets_helper/app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import 'package:wallpaper_hub/assets_helper/app_fonts.dart';
 import '../helpers/navigation_service.dart';
 
@@ -24,27 +21,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+
       automaticallyImplyLeading: false,
-      leading: leadingIconUnVisible
-          ? null
-          : Padding(
-              padding: EdgeInsets.all(14),
-              child: InkWell(
-                onTap: () {
-                  NavigationService.goBack;
-                },
-                child: SvgPicture.asset(
-                  AppIcons.arrowPrevious,
-                  height: 28,
-                  width: 28,
-                ),
-              ),
-            ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
       centerTitle: isCenterd,
       title: Text(
         title ?? '',
-        style: TextFontStyle.textStyle18w600Poppins,
+        style: TextFontStyle.textStyle18w600Poppins.copyWith(color: Colors.white),
+      ),
+      leading: leadingIconUnVisible
+          ? null
+          : Padding(
+        padding: const EdgeInsets.all(14),
+        child: InkWell(
+          onTap: () {
+            if (onCallBack != null) {
+              onCallBack!();
+            } else {
+              NavigationService.goBack();
+            }
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 20,
+          ),
+        ),
       ),
       actions: actions,
     );
