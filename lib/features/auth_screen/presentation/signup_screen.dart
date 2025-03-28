@@ -6,6 +6,7 @@ import 'package:wallpaper_hub/assets_helper/app_icons.dart';
 import 'package:wallpaper_hub/assets_helper/app_images.dart';
 import 'package:wallpaper_hub/common_widgets/custom_button.dart';
 import 'package:wallpaper_hub/common_widgets/custom_text_field.dart';
+import 'package:wallpaper_hub/helpers/all_routes.dart';
 import 'package:wallpaper_hub/helpers/navigation_service.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -20,20 +21,20 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, // Ensure the container takes the full width
-        height: double.infinity, // Ensure the container takes the full height
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.bottomLeft, // Start from bottom-left
-            end: Alignment.topRight, // End at top-right
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
             colors: [
               AppColors.gradiant_two,
-              AppColors.gradiant_one // Set the second color
+              AppColors.gradiant_one,
             ],
             stops: [
               0.0,
               1.0
-            ], // Optional: to control the transition between colors
+            ],
           ),
         ),
         child: SizedBox(
@@ -45,14 +46,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      AppImages.logo,
-                      height: 100,
-                      width: 100,
-                    ),
                     Text(
-                      'Wallscape',
-                      style: TextFontStyle.textStyle17w600Poppins.copyWith(
+                      'WallHub',
+                      style: TextFontStyle.headLine22w700Poppins.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.white,
                       ),
@@ -60,12 +56,52 @@ class _SignupScreenState extends State<SignupScreen> {
                     SizedBox(height: 10),
                     Text(
                       'Discover Premium Wallpapers',
-                      style: TextFontStyle.textStyle13w600Poppins.copyWith(
+                      style: TextFontStyle.textStyle14w600Poppins.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.white,
                       ),
                     ),
                     SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.asset(
+                                AppImages.wallpaper_1,
+                                height: 100,
+                                width: 70,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.asset(
+                                AppImages.wallpaper_3,
+                                height: 100,
+                                width: 70,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.asset(
+                                AppImages.wallpaper_2,
+                                height: 100,
+                                width: 70,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 25),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -180,23 +216,14 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "Forget Password?",
-                                style: TextFontStyle.textStyle13w500Poppins
-                                    .copyWith(
-                                  color: AppColors.primaryColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 25),
                           customButton(
-                            name: 'Log in',
-                            onCallBack: () {},
+                            name: 'Create Account',
+                            onCallBack: () {
+                              NavigationService.navigateTo(
+                                Routes.otpScreen,
+                              );
+                            },
                             context: context,
                             color: AppColors.primaryColor,
                             borderColor: AppColors.primaryColor,
@@ -206,24 +233,81 @@ class _SignupScreenState extends State<SignupScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
+                                "or continue with",
+                                style: TextFontStyle.textStyle14w500Poppins
+                                    .copyWith(color: AppColors.c3D4040),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                AppIcons.googleSvg,
+                                height: 20,
+                                width: 20,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                "Google",
+                                style: TextFontStyle.textStyle12w500Poppins
+                                    .copyWith(color: AppColors.c2C303E),
+                              ),
+                              SizedBox(
+                                width: 100,
+                              ),
+                              SvgPicture.asset(
+                                AppIcons.appleIcon,
+                                height: 23,
+                                width: 23,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                "Apple",
+                                style: TextFontStyle.textStyle12w500Poppins
+                                    .copyWith(color: AppColors.c2C303E),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("By signing up, you agree to our Terms and",
+                                  style: TextFontStyle.textStyle14w500Poppins
+                                      .copyWith(color: AppColors.c3D4040)
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Privacy Policy",
+                                  style: TextFontStyle.textStyle14w500Poppins
+                                      .copyWith(color: AppColors.c3D4040)
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
                                 "Already have an account?",
-                                style: TextFontStyle.textStyle13w500Poppins
-                                    .copyWith(
-                                  color: AppColors.primaryColor,
-                                ),
+                                style: TextFontStyle.textStyle14w500Poppins
+                                    .copyWith(color: AppColors.c3D4040),
                               ),
                               SizedBox(width: 5),
                               GestureDetector(
                                 onTap: () {
                                   NavigationService.goBack();
                                 },
-                                child: Text(
-                                  "Sign In",
-                                  style: TextFontStyle.textStyle13w500Poppins
-                                      .copyWith(
-                                    color: AppColors.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                child: Text("Sign In",
+                                    style: TextFontStyle.textStyle14w500Poppins
+                                        .copyWith(
+                                            color: AppColors.c3D4040,
+                                            fontWeight: FontWeight.bold)
                                 ),
                               ),
                             ],

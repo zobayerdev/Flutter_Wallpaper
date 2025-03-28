@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/login_screen.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/otp_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/signup_screen.dart';
 
 final class Routes {
@@ -12,6 +13,8 @@ final class Routes {
   // ################## Auth User ##################
   static const String logInScreen = '/logInScreen';
   static const String signUpScreen = '/signUpScreen';
+  static const String otpScreen = '/otpScreen';
+  
 }
 
 final class RouteGenerator {
@@ -30,6 +33,11 @@ final class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: SignupScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => SignupScreen());
+
+      case Routes.otpScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: OtpScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => OtpScreen());
 
       default:
         return null;

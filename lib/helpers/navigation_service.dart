@@ -47,4 +47,6 @@ final class NavigationService {
   static void goBackCall() {
     navigatorKey.currentState?.pop();
   }
+
+  static void pushNamed(String otpScreen) {}
 }

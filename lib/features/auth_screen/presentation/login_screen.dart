@@ -22,20 +22,20 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, // Ensure the container takes the full width
-        height: double.infinity, // Ensure the container takes the full height
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.bottomLeft, // Start from bottom-left
-            end: Alignment.topRight, // End at top-right
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
             colors: [
               AppColors.gradiant_two,
-              AppColors.gradiant_one // Set the second color
+              AppColors.gradiant_one,
             ],
             stops: [
               0.0,
               1.0
-            ], // Optional: to control the transition between colors
+            ],
           ),
         ),
         child: SizedBox(
@@ -136,7 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: 20),
                           customButton(
                             name: 'Log in',
-                            onCallBack: () {},
+                            onCallBack: () {
+                            },
                             context: context,
                             color: AppColors.primaryColor,
                             borderColor: AppColors.primaryColor,
