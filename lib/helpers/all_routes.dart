@@ -6,6 +6,7 @@ import 'package:wallpaper_hub/features/auth_screen/presentation/login_screen.dar
 import 'package:wallpaper_hub/features/auth_screen/presentation/new_pass_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/otp_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/signup_screen.dart';
+import 'package:wallpaper_hub/navigation_screen.dart';
 
 final class Routes {
   static final Routes _routes = Routes._internal();
@@ -18,6 +19,7 @@ final class Routes {
   static const String otpScreen = '/otpScreen';
   static const String forgetPassword = '/forgetPassword';
   static const String newPassword = '/newPassword';
+  static const String navigationScreen = '/navigationScreen';
 }
 
 final class RouteGenerator {
@@ -52,6 +54,12 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: NewPasswordScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => NewPasswordScreen());
+
+      case Routes.navigationScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: NavigationScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => NavigationScreen());
 
       default:
         return null;

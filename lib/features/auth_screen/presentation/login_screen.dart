@@ -177,8 +177,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     //   isLoading = false; // Stop loading
                                     // });
 
-                                    // NavigationService.navigateTo(
-                                    //     Routes.navigationScreen);
+                                    NavigationService.navigateTo(
+                                      Routes.navigationScreen,
+                                    );
                                   },
                                   context: context,
                                   color: AppColors.primaryColor,
