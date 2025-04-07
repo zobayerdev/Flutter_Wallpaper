@@ -106,9 +106,6 @@ class _OtpScreenState extends State<OtpScreen> {
                     customButton(
                       name: 'Verify',
                       onCallBack: () {
-                        NavigationService.navigateTo(
-                          Routes.forgetScreen,
-                        );
                       },
                       context: context,
                       color: AppColors.primaryColor,
