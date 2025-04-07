@@ -107,7 +107,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       name: 'Verify',
                       onCallBack: () {
                         NavigationService.navigateTo(
-                          Routes.otpScreen,
+                          Routes.forgetScreen,
                         );
                       },
                       context: context,

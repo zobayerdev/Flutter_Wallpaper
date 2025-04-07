@@ -136,10 +136,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: 20),
                           customButton(
                             name: 'Log in',
-                            onCallBack: () {
-                            },
+                            onCallBack: () {},
                             context: context,
-                            color: AppColors.primaryColor,
+                            gradient: LinearGradient(
+                              colors: [
+                                AppColors.gradiantEnd,
+                                AppColors.gradiantStart,
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.bottomCenter,
+                            ),
                             borderColor: AppColors.primaryColor,
                           ),
                           SizedBox(height: 20),

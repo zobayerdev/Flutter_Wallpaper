@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/forget_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/login_screen.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/new_pass_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/otp_screen.dart';
 import 'package:wallpaper_hub/features/auth_screen/presentation/signup_screen.dart';
 
@@ -14,7 +16,9 @@ final class Routes {
   static const String logInScreen = '/logInScreen';
   static const String signUpScreen = '/signUpScreen';
   static const String otpScreen = '/otpScreen';
-  
+  static const String forgetScreen = '/forgetScreen';
+  static const String newPassScreen = '/newPassScreen';
+
 }
 
 final class RouteGenerator {
@@ -38,6 +42,14 @@ final class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: OtpScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => OtpScreen());
+      case Routes.forgetScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: ForgetScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => ForgetScreen());
+      case Routes.newPassScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: NewPassScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => NewPassScreen());
 
       default:
         return null;

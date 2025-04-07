@@ -42,12 +42,11 @@
 
 import 'package:wallpaper_hub/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:wallpaper_hub/assets_helper/app_fonts.dart';
 
 Widget customButton({
   required String name,
-  required VoidCallback? onCallBack, // Allow null for safety
+  required VoidCallback? onCallBack,
   double? height,
   double? minWidth,
   double? borderRadius,
@@ -56,17 +55,19 @@ Widget customButton({
   TextStyle? textStyle,
   required BuildContext context,
   Color? borderColor,
+  Gradient? gradient,
   elevation,
 }) {
   return GestureDetector(
-    onTap: onCallBack ?? () {}, // Provide a fallback if null
+    onTap: onCallBack ?? () {},
     child: Container(
       height: height ?? 62,
       width: minWidth ?? double.infinity,
       padding: padding ?? EdgeInsets.all(0),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: color ?? AppColors.c6940C9,
+        gradient: gradient,
+        color: gradient == null ? color ?? AppColors.gradiantEnd : null,
         borderRadius: BorderRadius.circular(borderRadius ?? 12),
         border: Border.all(
           color: borderColor ?? AppColors.c0A5B55,
