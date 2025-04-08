@@ -9,10 +9,15 @@ class AppColors {
   static const Color snow_blue_color = Color(0xFFEFF6FF);
   static const Color gradiant_one = Color(0xFF1E274F);
   static const Color gradiant_two = Color(0xFF1D4A61);
+
+  static const Color gradiantStart = Color(0xFF6B4BFB);
+  static const Color gradiantEnd = Color(0xFF4B6BFB);
+
   static const Color cEAE4E1 = Color(0xFFEAE4E1);
   static const Color cA0A0A0 = Color(0xFFA0A0A0);
   static const Color c182234 = Color(0xFF182234);
   static const Color c303C4A = Color(0xFF303C4A);
+
 
   static const Color cDBEAFE = Color(0xFFDBEAFE);
   static const Color c6B7280 = Color(0xFF6B7280);

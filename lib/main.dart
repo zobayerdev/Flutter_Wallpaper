@@ -1,6 +1,7 @@
 import 'package:wallpaper_hub/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:wallpaper_hub/features/auth_screen/presentation/new_pass_screen.dart';
 import 'constants/custome_theme.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/di.dart';

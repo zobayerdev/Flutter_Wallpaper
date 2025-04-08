@@ -145,46 +145,52 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: 20),
                           isLoading // If the loading state is true, show loading
                               ? Container(
-                                  height: 62,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: AppColors.primaryColor,
-                                      width: 2,
-                                    ),
-                                  ),
-                                  child: Lottie.asset(
-                                    AppLottie.loading,
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                )
+                            height: 62,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: AppColors.primaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            child: Lottie.asset(
+                              AppLottie.loading,
+                              height: 100,
+                              width: 100,
+                            ),
+                          )
                               : customButton(
-                                  name: 'Sign In',
-                                  onCallBack: () async {
-                                    setState(() {
-                                      isLoading = true; // Start loading
-                                    });
+                            name: 'Log In',
+                            onCallBack: () async {
+                              setState(() {
+                                isLoading = true; // Start loading
+                              });
 
-                                    // await postLoginRx.signIn(
-                                    //   email: _emailController.text,
-                                    //   password: _passwordController.text,
-                                    // );
+                              // await postLoginRx.signIn(
+                              //   email: _emailController.text,
+                              //   password: _passwordController.text,
+                              // );
 
-                                    // setState(() {
-                                    //   isLoading = false; // Stop loading
-                                    // });
+                              // setState(() {
+                              //   isLoading = false; // Stop loading
+                              // });
 
-                                    NavigationService.navigateTo(
-                                      Routes.navigationScreen,
-                                    );
-                                  },
-                                  context: context,
-                                  color: AppColors.primaryColor,
-                                  borderColor: AppColors.primaryColor,
-                                ),
+                              // NavigationService.navigateTo(
+                              //     Routes.otpScreen);
+                            },
+                            context: context,
+                            gradient: LinearGradient(
+                              colors: [
+                                AppColors.gradiantEnd,
+                                AppColors.gradiantStart,
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.bottomCenter,
+                            ),
+                            borderColor: AppColors.primaryColor,
+                          ),
                           SizedBox(height: 20),
                           Text(
                             "or continue with",

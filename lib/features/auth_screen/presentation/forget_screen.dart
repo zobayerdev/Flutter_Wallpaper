@@ -50,7 +50,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                 child: Column(
                   children: [
                     Image.asset(
-                      AppImages.logo,
+                      AppImages.logo2,
                       height: 100,
                       width: 100,
                     ),
@@ -119,46 +119,52 @@ class _ForgetScreenState extends State<ForgetScreen> {
                           SizedBox(height: 20),
                           isLoading // If the loading state is true, show loading
                               ? Container(
-                                  height: 62,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: AppColors.primaryColor,
-                                      width: 2,
-                                    ),
-                                  ),
-                                  child: Lottie.asset(
-                                    AppLottie.loading,
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                )
+                            height: 62,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: AppColors.primaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            child: Lottie.asset(
+                              AppLottie.loading,
+                              height: 100,
+                              width: 100,
+                            ),
+                          )
                               : customButton(
-                                  name: 'Send Reset Link',
-                                  onCallBack: () async {
-                                    setState(() {
-                                      isLoading = true; // Start loading
-                                    });
+                            name: 'Send Reset Link',
+                            onCallBack: () async {
+                              setState(() {
+                                isLoading = true; // Start loading
+                              });
 
-                                    // await postLoginRx.signIn(
-                                    //   email: _emailController.text,
-                                    //   password: _passwordController.text,
-                                    // );
+                              // await postLoginRx.signIn(
+                              //   email: _emailController.text,
+                              //   password: _passwordController.text,
+                              // );
 
-                                    // setState(() {
-                                    //   isLoading = false; // Stop loading
-                                    // });
+                              // setState(() {
+                              //   isLoading = false; // Stop loading
+                              // });
 
-                                    NavigationService.navigateTo(
-                                      Routes.otpScreen,
-                                    );
-                                  },
-                                  context: context,
-                                  color: AppColors.primaryColor,
-                                  borderColor: AppColors.primaryColor,
-                                ),
+                              NavigationService.navigateTo(
+                                  Routes.otpScreen);
+                            },
+                            context: context,
+                            gradient: LinearGradient(
+                              colors: [
+                                AppColors.gradiantEnd,
+                                AppColors.gradiantStart,
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.bottomCenter,
+                            ),
+                            borderColor: AppColors.primaryColor,
+                          ),
                           SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -171,10 +177,8 @@ class _ForgetScreenState extends State<ForgetScreen> {
                                 },
                                 child: Text(
                                   "Back to login",
-                                  style: TextFontStyle.textStyle15w500Poppins
-                                      .copyWith(
-                                    color: AppColors.c3D4040,
-                                    fontWeight: FontWeight.bold,
+                                  style:   TextFontStyle.textStyle15w500Poppins.copyWith(
+                                    color: AppColors.primaryColor,
                                   ),
                                 ),
                               ),

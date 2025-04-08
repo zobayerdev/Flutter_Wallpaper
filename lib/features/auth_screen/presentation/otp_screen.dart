@@ -157,6 +157,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           .copyWith(color: AppColors.c969696),
                     ),
                     SizedBox(height: 30),
+
                     isLoading // If the loading state is true, show loading
                         ? Container(
                             height: 62,
@@ -197,6 +198,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             color: AppColors.primaryColor,
                             borderColor: AppColors.primaryColor,
                           ),
+
                     SizedBox(height: 25),
                     Text(
                       'Resend Code',
