@@ -49,6 +49,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   geolocator: ^9.0.2
   fluttertoast: ^8.2.10
+  cached_network_image: ^3.4.1
+  lottie: ^3.1.2
+  permission_handler: ^11.4.0
 
   # Using Graph
   # syncfusion_flutter_charts: ^27.1.57

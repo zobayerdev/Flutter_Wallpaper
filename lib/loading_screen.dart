@@ -52,7 +52,6 @@ class _LoadingState extends State<Loading> {
               : WelcomeScreen();
     }
     /* return TimeAppointmentScreen();
-
               ? HomeScreen()
               : HomeScreen();
     }

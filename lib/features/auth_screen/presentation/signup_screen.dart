@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:wallpaper_hub/assets_helper/app_colors.dart';
 import 'package:wallpaper_hub/assets_helper/app_fonts.dart';
 import 'package:wallpaper_hub/assets_helper/app_icons.dart';
 import 'package:wallpaper_hub/assets_helper/app_images.dart';
+import 'package:wallpaper_hub/assets_helper/app_lottie.dart';
 import 'package:wallpaper_hub/common_widgets/custom_button.dart';
-import 'package:wallpaper_hub/common_widgets/custom_text_field.dart';
+import 'package:wallpaper_hub/common_widgets/custom_textField.dart';
+import 'package:wallpaper_hub/features/auth_screen/widgets/custom_image_button.dart';
 import 'package:wallpaper_hub/helpers/all_routes.dart';
 import 'package:wallpaper_hub/helpers/navigation_service.dart';
 
@@ -17,6 +19,15 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  bool _isObscure = true;
+  bool _isCObscure = true;
+  bool isLoading = false;
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,16 +42,13 @@ class _SignupScreenState extends State<SignupScreen> {
               AppColors.gradiant_two,
               AppColors.gradiant_one,
             ],
-            stops: [
-              0.0,
-              1.0
-            ],
+            stops: [0.0, 1.0],
           ),
         ),
         child: SizedBox(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(top: 100, left: 20, right: 20),
+              padding: EdgeInsets.only(top: 50, left: 20, right: 20),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,20 +147,18 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
-                          CustomTextfield(
-                            hintText: 'Enter Your Email',
-                            inputType: TextInputType.emailAddress,
-                            fillColor: AppColors.cF9FAFB,
-                            borderColor: AppColors.cF9FAFB,
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                AppIcons.emailSvg,
-                              ),
-                            ),
+                          SizedBox(height: 5),
+                          CustomTextFormField(
+                            isPrefixIcon: true,
+                            isBorder: true,
+                            fillColor: AppColors.cFBFBFB,
+                            hintText: 'Email',
+                            iconpath: AppIcons.emailSvg,
+                            controller: _emailController,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(
+                            height: 15,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -167,24 +173,27 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
-                          CustomTextfield(
-                            hintText: 'Create a password',
-                            inputType: TextInputType.emailAddress,
-                            fillColor: AppColors.cF9FAFB,
-                            borderColor: AppColors.cF9FAFB,
-                            isObsecure: true,
-                            suffixIcon: Icon(
-                              Icons.visibility_off_outlined,
-                            ),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                AppIcons.lockSvg,
-                              ),
-                            ),
+                          SizedBox(height: 5),
+                          CustomTextFormField(
+                            obscureText: _isObscure,
+                            isPrefixIcon: true,
+                            isBorder: true,
+                            fillColor: AppColors.cFBFBFB,
+                            suffixIcon: _isObscure
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            onSuffixIconTap: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                            hintText: 'Password',
+                            iconpath: AppIcons.lockSvg,
+                            controller: _passwordController,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(
+                            height: 15,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -199,35 +208,66 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
-                          CustomTextfield(
-                            hintText: 'Confirm your password',
-                            inputType: TextInputType.emailAddress,
-                            fillColor: AppColors.cF9FAFB,
-                            borderColor: AppColors.cF9FAFB,
-                            isObsecure: true,
-                            suffixIcon: Icon(
-                              Icons.visibility_off_outlined,
-                            ),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                AppIcons.lockSvg,
-                              ),
-                            ),
+                          SizedBox(height: 5),
+                          CustomTextFormField(
+                            obscureText: _isCObscure,
+                            isPrefixIcon: true,
+                            isBorder: true,
+                            fillColor: AppColors.cFBFBFB,
+                            suffixIcon: _isCObscure
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            onSuffixIconTap: () {
+                              setState(() {
+                                _isCObscure = !_isCObscure;
+                              });
+                            },
+                            hintText: 'Confirm Password',
+                            iconpath: AppIcons.lockSvg,
+                            controller: _confirmPasswordController,
                           ),
                           SizedBox(height: 25),
-                          customButton(
-                            name: 'Create Account',
-                            onCallBack: () {
-                              NavigationService.navigateTo(
-                                Routes.otpScreen,
-                              );
-                            },
-                            context: context,
-                            color: AppColors.primaryColor,
-                            borderColor: AppColors.primaryColor,
-                          ),
+                          isLoading // If the loading state is true, show loading
+                              ? Container(
+                                  height: 62,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: AppColors.primaryColor,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Lottie.asset(
+                                    AppLottie.loading,
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                )
+                              : customButton(
+                                  name: 'Sign Up',
+                                  onCallBack: () async {
+                                    setState(() {
+                                      isLoading = true; // Start loading
+                                    });
+
+                                    // await postLoginRx.signIn(
+                                    //   email: _emailController.text,
+                                    //   password: _passwordController.text,
+                                    // );
+
+                                    // setState(() {
+                                    //   isLoading = false; // Stop loading
+                                    // });
+
+                                    // NavigationService.navigateTo(
+                                    //     Routes.navigationScreen);
+                                  },
+                                  context: context,
+                                  color: AppColors.primaryColor,
+                                  borderColor: AppColors.primaryColor,
+                                ),
                           SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -240,54 +280,17 @@ class _SignupScreenState extends State<SignupScreen> {
                             ],
                           ),
                           SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                AppIcons.googleSvg,
-                                height: 20,
-                                width: 20,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "Google",
-                                style: TextFontStyle.textStyle12w500Poppins
-                                    .copyWith(color: AppColors.c2C303E),
-                              ),
-                              SizedBox(
-                                width: 100,
-                              ),
-                              SvgPicture.asset(
-                                AppIcons.appleIcon,
-                                height: 23,
-                                width: 23,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "Apple",
-                                style: TextFontStyle.textStyle12w500Poppins
-                                    .copyWith(color: AppColors.c2C303E),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("By signing up, you agree to our Terms and",
-                                  style: TextFontStyle.textStyle14w500Poppins
-                                      .copyWith(color: AppColors.c3D4040)
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Privacy Policy",
-                                  style: TextFontStyle.textStyle14w500Poppins
-                                      .copyWith(color: AppColors.c3D4040)
-                              ),
-                            ],
+                          customImageButton(
+                            name: 'Continue with Google',
+                            onCallBack: () {},
+                            context: context,
+                            color: AppColors.whiteColor,
+                            borderColor: AppColors.whiteColor,
+                            height: 50,
+                            textStyle:
+                                TextFontStyle.textStyle13w500Poppins.copyWith(
+                              color: AppColors.blackColor,
+                            ),
                           ),
                           SizedBox(height: 20),
                           Row(
@@ -301,19 +304,27 @@ class _SignupScreenState extends State<SignupScreen> {
                               SizedBox(width: 5),
                               GestureDetector(
                                 onTap: () {
-                                  NavigationService.goBack();
+                                  NavigationService.navigateToReplacement(
+                                    Routes.logInScreen,
+                                  );
                                 },
-                                child: Text("Sign In",
-                                    style: TextFontStyle.textStyle14w500Poppins
-                                        .copyWith(
-                                            color: AppColors.c3D4040,
-                                            fontWeight: FontWeight.bold)
+                                child: Text(
+                                  "Sign In",
+                                  style: TextFontStyle.textStyle14w500Poppins
+                                      .copyWith(
+                                    color: AppColors.c3D4040,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
+                    ),
+                    
+                    SizedBox(
+                      height: 20,
                     ),
                   ],
                 ),
