@@ -177,8 +177,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               //   isLoading = false; // Stop loading
                               // });
 
-                              // NavigationService.navigateTo(
-                              //     Routes.otpScreen);
+                              NavigationService.navigateTo(
+                                  Routes.navigationScreen);
                             },
                             context: context,
                             gradient: LinearGradient(

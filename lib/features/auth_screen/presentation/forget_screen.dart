@@ -177,9 +177,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                                 },
                                 child: Text(
                                   "Back to login",
-                                  style:   TextFontStyle.textStyle15w500Poppins.copyWith(
-                                    color: AppColors.primaryColor,
-                                  ),
+                                   
                                 ),
                               ),
                             ],
