@@ -99,7 +99,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
           hintText: widget.hintText,
           hintStyle: TextFontStyle.textStyle14w400Poppins.copyWith(
-            color: AppColors.c919293,
+            color: AppColors.c9A9FA5,
             fontSize: 14,
             height: 22 / 14,
             letterSpacing: 0.8,
@@ -111,7 +111,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     widget.iconpath!,
                     width: 24,
                     color:
-                        _isFocused ? AppColors.primaryColor : AppColors.c000000,
+                        _isFocused ? AppColors.primaryColor : AppColors.c9A9FA5,
                   ),
                 )
               : null,
