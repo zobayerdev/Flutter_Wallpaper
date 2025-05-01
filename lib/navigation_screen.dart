@@ -32,10 +32,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   final List<StatefulWidget> _screens = [
     HomeScreen(),
-    ExploreScreen(),
+    FavouriteScreen(),
     MyDownloadScreen(),
     FavouriteScreen(),
-    ProfileScreen(),
   ];
 
   @override
@@ -51,7 +50,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       args = ModalRoute.of(context)!.settings.arguments;
     }
     if (args != null) {
-      _colorIndex = 5;
+      _colorIndex = 4;
       screenPage = args as StatefulWidget;
       var newColorindex = -1;
 
@@ -105,14 +104,14 @@ class _NavigationScreenState extends State<NavigationScreen> {
               ),
             ),
             CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.exploreGrey,
+              icon: Icon(
+                Icons.favorite_outline,
                 color: (_currentIndex == 1)
                     ? AppColors.primaryColor
                     : AppColors.cA0A0A0,
               ),
               title: Text(
-                "Explore",
+                "Favourite",
                 style: TextFontStyle.textStyle12w400Poppins.copyWith(
                   color: (_currentIndex == 1)
                       ? AppColors.primaryColor
@@ -120,15 +119,16 @@ class _NavigationScreenState extends State<NavigationScreen> {
                 ),
               ),
             ),
+
             CustomNavigationBarItem(
               icon: SvgPicture.asset(
-                AppIcons.savedGrey,
+                AppIcons.appleIcon,
                 color: (_currentIndex == 2)
                     ? AppColors.primaryColor
                     : AppColors.cA0A0A0,
               ),
               title: Text(
-                "Favourite",
+                "Premium",
                 style: TextFontStyle.textStyle12w400Poppins.copyWith(
                   color: (_currentIndex == 2)
                       ? AppColors.primaryColor

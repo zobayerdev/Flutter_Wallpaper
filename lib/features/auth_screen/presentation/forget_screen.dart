@@ -115,6 +115,9 @@ class _ForgetScreenState extends State<ForgetScreen> {
                             hintText: 'Email',
                             iconpath: AppIcons.emailSvg,
                             controller: _emailController,
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                           ),
                           SizedBox(height: 20),
                           isLoading // If the loading state is true, show loading
