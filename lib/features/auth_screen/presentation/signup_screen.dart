@@ -149,6 +149,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           SizedBox(height: 5),
                           CustomTextFormField(
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                             isPrefixIcon: true,
                             isBorder: true,
                             fillColor: AppColors.cFBFBFB,
@@ -175,6 +178,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           SizedBox(height: 5),
                           CustomTextFormField(
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                             obscureText: _isObscure,
                             isPrefixIcon: true,
                             isBorder: true,
@@ -210,6 +216,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           SizedBox(height: 5),
                           CustomTextFormField(
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                             obscureText: _isCObscure,
                             isPrefixIcon: true,
                             isBorder: true,

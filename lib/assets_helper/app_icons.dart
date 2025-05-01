@@ -9,6 +9,8 @@ class AppIcons {
   static const String googleSvg = '$iconsRoute/google_icon.svg';
   static const String appleIcon = '$iconsRoute/apple_icon.svg';
   static const String verifiedIcon = '$iconsRoute/verified_icon.svg.svg';
+  static const String loveIcon = '$iconsRoute/love_icon.svg.svg';
+  static const String crownIcon = '$iconsRoute/crown.svg.svg';
 
   // Navigation Screen Icons
   static const String exploreGrey = '$iconsRoute/explore_grey.svg';
@@ -18,4 +20,5 @@ class AppIcons {
 
   // Home Screen Icons
   static const String searchIcon = '$iconsRoute/searchIcon.svg';
+  static const String logoIcon = '$iconsRoute/logo_icon.svg';
 }

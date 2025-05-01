@@ -101,11 +101,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: 'Email',
                             iconpath: AppIcons.emailSvg,
                             controller: _emailController,
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           CustomTextFormField(
+                            hintTextColor: AppColors.c818181,
+                            textColor: AppColors.c818181,
+                            iconColor: AppColors.c818181,
                             obscureText: _isObscure,
                             isPrefixIcon: true,
                             isBorder: true,
